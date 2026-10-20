@@ -8,6 +8,7 @@ GitHub Pages publishes this repository from `main`.
 
 | Field | URL |
 | --- | --- |
+| Opt-in form (use this in Call to Action) | https://cio-solutions-hq.github.io/pmi-sms-terms/opt-in.html |
 | Terms & Conditions | https://cio-solutions-hq.github.io/pmi-sms-terms/terms.html |
 | Privacy Statement | https://cio-solutions-hq.github.io/pmi-sms-terms/privacy.html |
 | Opt-Out | https://cio-solutions-hq.github.io/pmi-sms-terms/opt-out.html |
@@ -19,7 +20,9 @@ Paste the blocks below into Teams Admin Center for the SMS campaign.
 
 ### Call to action
 
-By submitting your phone number, requesting a quote, completing a customer service form, or otherwise providing consent to Peters and Milam Insurance Services, you agree to receive text messages related to insurance quotes, policies, claims, billing reminders, appointments, and customer support. Message frequency varies. Message and data rates may apply. Reply STOP to opt out and HELP for assistance. Terms & Conditions: https://cio-solutions-hq.github.io/pmi-sms-terms/terms.html. Privacy Policy: https://cio-solutions-hq.github.io/pmi-sms-terms/privacy.html. Mobile opt-in information and consent will not be shared with third parties for marketing purposes.
+Replace the Call to Action field with this text. The first link must be the opt-in form. Terms and Privacy alone do not satisfy Microsoft’s CallToActionMissingOptInForm check.
+
+By submitting the opt-in form at https://cio-solutions-hq.github.io/pmi-sms-terms/opt-in.html, you consent to receive text messages from Peters and Milam Insurance Services about insurance quotes, policies, claims, billing reminders, appointments, and customer support at the mobile number you provide. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe. Reply HELP for help. Mobile opt-in information and consent will not be shared with third parties for marketing purposes. Privacy Policy: https://cio-solutions-hq.github.io/pmi-sms-terms/privacy.html. Terms and Conditions: https://cio-solutions-hq.github.io/pmi-sms-terms/terms.html.
 
 ### Opt-in
 

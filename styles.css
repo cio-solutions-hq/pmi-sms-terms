@@ -179,3 +179,82 @@ ol {
 .site-footer a {
   color: var(--brand);
 }
+
+.optional,
+.hint {
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.92rem;
+}
+
+.opt-in {
+  margin: 1.1rem 0 1.4rem;
+}
+
+.field {
+  margin: 0.95rem 0;
+}
+
+.field > label {
+  display: block;
+  font-weight: 650;
+  margin-bottom: 0.3rem;
+}
+
+.field input[type="text"],
+.field input[type="tel"] {
+  width: 100%;
+  max-width: 24rem;
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #c9bfb0;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.check {
+  display: flex;
+  gap: 0.7rem;
+  align-items: flex-start;
+}
+
+.check input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.35rem;
+  flex: none;
+}
+
+.form-error {
+  min-height: 1.4rem;
+  margin: 0.4rem 0;
+  color: #8a2b1f;
+}
+
+button[type="submit"] {
+  font: inherit;
+  font-weight: 650;
+  color: #fff;
+  background: var(--brand);
+  border: 0;
+  border-radius: 6px;
+  padding: 0.7rem 1.05rem;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background: var(--brand-deep);
+}
+
+.confirmation {
+  margin: 1rem 0 1.4rem;
+  padding: 0.2rem 1rem 0.8rem;
+  background: #eef5f1;
+  border: 1px solid #b7d0c4;
+  border-radius: 8px;
+}
+
+.confirmation:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}

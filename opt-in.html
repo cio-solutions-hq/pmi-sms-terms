@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SMS Opt-In | Peters and Milam Insurance Services</title>
+  <meta name="description" content="Opt in to SMS messages from Peters and Milam Insurance Services about insurance quotes, policies, claims, billing reminders, appointments, and customer support.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="brand"><a href="index.html">Peters and Milam Insurance Services</a></p>
+      <p class="tagline">SMS messaging program</p>
+      <nav aria-label="Program pages">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="opt-in.html" aria-current="page">Opt-in</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="opt-out.html">Opt-out</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="content">
+    <article class="panel">
+      <h1>Opt in to SMS messages</h1>
+      <p class="updated">Peters and Milam Insurance Services · Last updated October 20, 2026</p>
+      <p>This form is only for SMS opt-in. Submitting it does not purchase insurance, request a quote, or create an account.</p>
+      <p>By submitting this form, you consent to receive text messages from Peters and Milam Insurance Services about insurance quotes, policies, claims, billing reminders, appointments, and customer support at the mobile number you provide. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe. Reply HELP for help. Consent to receive SMS messages is not a condition of purchasing insurance products or services. Mobile opt-in information and consent will not be shared with third parties for marketing purposes.</p>
+      <p><a href="https://cio-solutions-hq.github.io/pmi-sms-terms/privacy.html">Privacy Policy</a> · <a href="https://cio-solutions-hq.github.io/pmi-sms-terms/terms.html">Terms and Conditions</a></p>
+
+      <form id="sms-opt-in-form" class="opt-in" action="mailto:info@petersmilam.com" method="post" enctype="text/plain">
+        <div class="field">
+          <label for="opt-in-name">Name <span class="optional">(optional)</span></label>
+          <input id="opt-in-name" name="name" type="text" autocomplete="name" maxlength="120">
+        </div>
+        <div class="field">
+          <label for="opt-in-mobile">Mobile number</label>
+          <input id="opt-in-mobile" name="mobile_phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(805) 555-0100" aria-describedby="mobile-hint">
+          <p id="mobile-hint" class="hint">U.S. mobile number that can receive text messages.</p>
+        </div>
+        <div class="field">
+          <div class="check">
+            <input id="opt-in-consent" name="sms_consent" type="checkbox" value="I agree to receive SMS messages from Peters and Milam Insurance Services." required>
+            <label for="opt-in-consent">I agree to receive SMS messages from Peters and Milam Insurance Services at the mobile number I entered. Messages may include insurance quotes, policies, claims, billing reminders, appointments, and customer support. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe or HELP for help. Consent is not a condition of purchasing insurance. Mobile opt-in information and consent will not be shared with third parties for marketing purposes. I have read the <a href="https://cio-solutions-hq.github.io/pmi-sms-terms/privacy.html">Privacy Policy</a> and <a href="https://cio-solutions-hq.github.io/pmi-sms-terms/terms.html">Terms and Conditions</a>.</label>
+          </div>
+        </div>
+        <p id="form-error" class="form-error" role="alert"></p>
+        <button type="submit">Submit SMS opt-in</button>
+      </form>
+
+      <section id="opt-in-confirmation" class="confirmation" hidden tabindex="-1" aria-labelledby="confirmation-title">
+        <h2 id="confirmation-title">Thank you for opting in</h2>
+        <p>Thank you for opting in to receive SMS messages from Peters and Milam Insurance Services. You may receive messages regarding insurance quotes, policies, claims, billing reminders, appointments, and customer service. Message frequency varies. Message and data rates may apply. Reply HELP for assistance or STOP to opt out.</p>
+        <p>Mobile number: <strong id="confirmed-phone"></strong></p>
+        <p>Request time: <strong id="confirmed-time"></strong></p>
+        <p>Send the email that opened to <a href="mailto:info@petersmilam.com">info@petersmilam.com</a> so Peters and Milam Insurance Services receives this request. If no email opened, use <a id="email-request" href="mailto:info@petersmilam.com">email this opt-in request</a>. You can also call <a href="tel:+18056873225">(805) 687-3225</a>.</p>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="opt-out.html">Opt-out</a> · Peters and Milam Insurance Services</p>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var form = document.getElementById("sms-opt-in-form");
+      var confirmation = document.getElementById("opt-in-confirmation");
+      var error = document.getElementById("form-error");
+      var phoneInput = document.getElementById("opt-in-mobile");
+      var consentInput = document.getElementById("opt-in-consent");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        error.textContent = "";
+        phoneInput.removeAttribute("aria-invalid");
+        consentInput.removeAttribute("aria-invalid");
+
+        var name = form.elements.name.value.trim();
+        var digits = phoneInput.value.replace(/\D/g, "");
+        if (digits.length === 11 && digits.charAt(0) === "1") {
+          digits = digits.slice(1);
+        }
+        if (digits.length !== 10) {
+          error.textContent = "Enter a 10-digit U.S. mobile number.";
+          phoneInput.setAttribute("aria-invalid", "true");
+          phoneInput.focus();
+          return;
+        }
+        if (!consentInput.checked) {
+          error.textContent = "Check the box to consent to SMS messages. It is not selected for you.";
+          consentInput.setAttribute("aria-invalid", "true");
+          consentInput.focus();
+          return;
+        }
+
+        var phone = "(" + digits.slice(0, 3) + ") " + digits.slice(3, 6) + "-" + digits.slice(6);
+        var stamp = new Date().toLocaleString("en-US", {
+          timeZone: "America/Los_Angeles",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+          second: "2-digit",
+          timeZoneName: "short"
+        });
+        var body = [
+          "SMS opt-in request for Peters and Milam Insurance Services",
+          "",
+          "Name: " + (name || "(not provided)"),
+          "Mobile number: " + phone,
+          "Consent: I agree to receive SMS messages from Peters and Milam Insurance Services.",
+          "Submitted: " + stamp,
+          "Page: https://cio-solutions-hq.github.io/pmi-sms-terms/opt-in.html"
+        ].join("\n");
+        var mailto = "mailto:info@petersmilam.com?subject=" + encodeURIComponent("SMS opt-in request") + "&body=" + encodeURIComponent(body);
+
+        document.getElementById("confirmed-phone").textContent = phone;
+        document.getElementById("confirmed-time").textContent = stamp;
+        document.getElementById("email-request").setAttribute("href", mailto);
+
+        form.hidden = true;
+        confirmation.hidden = false;
+        confirmation.focus();
+
+        var mail = document.createElement("a");
+        mail.href = mailto;
+        mail.click();
+      });
+    })();
+  </script>
+</body>
+</html>
